@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Navigation } from "./components/Navigation";
 import { HeroSection } from "./components/HeroSection";
 import { StatsClientsSection } from "./components/StatsClientsSection";
@@ -12,15 +12,42 @@ import { TestimonialsSection } from "./components/TestimonialsSection";
 import { EnquirySection } from "./components/EnquirySection";
 import { FAQSection } from "./components/FAQSection";
 import { Footer } from "./components/Footer";
+import { NotFoundPage } from "./components/NotFoundPage";
 
 export const App: React.FC = () => {
+  const [currentPath, setCurrentPath] = useState<string>(window.location.pathname);
+
+  useEffect(() => {
+    const handleLocationChange = () => {
+      setCurrentPath(window.location.pathname);
+    };
+
+    window.addEventListener("popstate", handleLocationChange);
+    return () => window.removeEventListener("popstate", handleLocationChange);
+  }, []);
+
+  // Recognized routes: "/", "", or index.html
+  const isHome = currentPath === "/" || currentPath === "" || currentPath === "/index.html";
+
+  if (!isHome) {
+    return (
+      <NotFoundPage
+        onBackToHome={() => {
+          window.history.pushState({}, "", "/");
+          setCurrentPath("/");
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }}
+      />
+    );
+  }
+
   return (
-    <div className="min-h-screen bg-[#DDD4C4] text-[#0A0908] flex flex-col font-sans selection:bg-[#9E7844]/30 selection:text-[#0A0908]">
+    <div className="min-h-screen bg-[#DDD4C4] text-[#0A0908] flex flex-col font-sans selection:bg-[#9E7844]/30 selection:text-[#0A0908] overflow-x-hidden w-full max-w-full">
       {/* Fixed Header */}
       <Navigation />
 
       {/* Main Page Flow */}
-      <main className="flex-1">
+      <main className="flex-1 w-full overflow-x-hidden">
         {/* Section 1: Hero with cinematic video */}
         <HeroSection />
 
@@ -36,7 +63,7 @@ export const App: React.FC = () => {
         {/* Section 5: Practice & Services */}
         <ServicesSection />
 
-        {/* Section 6: Selected Projects Showcase inspired by reference UI */}
+        {/* Section 6: Selected Projects Showcase */}
         <ProjectsSection />
 
         {/* Section 7: Architecture Philosophy */}
@@ -45,13 +72,13 @@ export const App: React.FC = () => {
         {/* Section 8: Process & Methodology */}
         <ProcessSection />
 
-        {/* Section 10: Verified Client Testimonials */}
+        {/* Section 9: Verified Client Testimonials */}
         <TestimonialsSection />
 
-        {/* Section 11: Project Enquiry Form with 3D model & reference styling */}
+        {/* Section 10: Project Enquiry Form with 3D model */}
         <EnquirySection />
 
-        {/* Section 12: Frequently Asked Questions */}
+        {/* Section 11: Frequently Asked Questions */}
         <FAQSection />
       </main>
 

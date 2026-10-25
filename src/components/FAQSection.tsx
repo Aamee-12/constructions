@@ -61,7 +61,7 @@ export const FAQSection: React.FC = () => {
         "Yes! As luxury home builders, we specialize in custom, high-end homes with premium finishes, smart home integrations, and contemporary designs. Our team ensures every home is built with precision and elegance.",
     },
     {
-      question: "Can I customize my home design with Construct Your Dream Home?",
+      question: "Can I customize my home design with HM Constructions and Interiors?",
       answer:
         "Absolutely! As leading custom home builders in Bangalore, we offer fully customizable designs to match your vision. From layout planning to material selection, our team ensures your home reflects your unique style and functional needs.",
     },
@@ -92,7 +92,7 @@ export const FAQSection: React.FC = () => {
   };
 
   return (
-    <section id="faqs" className="relative py-14 md:py-20 bg-[#D0C5B2] text-[#0A0908] border-t border-[#0A0908]/15">
+    <section id="faq" className="relative py-14 md:py-20 bg-[#D0C5B2] text-[#0A0908] border-t border-[#0A0908]/15">
       <div className="max-w-5xl mx-auto px-6 md:px-12">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-10 md:mb-14">
