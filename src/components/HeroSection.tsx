@@ -126,7 +126,7 @@ export const HeroSection: React.FC = () => {
     <div
       id="hero"
       ref={containerRef}
-      className="relative w-full h-[220vh] bg-black"
+      className="relative w-full h-[220vh] bg-[#DDD4C4]"
     >
       {/* Pinned Sticky Viewport Stage — Pure, high-contrast, zero cream tinting over the video */}
       <div className="sticky top-0 left-0 w-full h-screen overflow-hidden flex flex-col justify-between">
