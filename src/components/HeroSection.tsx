@@ -67,16 +67,11 @@ export const HeroSection: React.FC = () => {
       mouseX += (targetMouseX - mouseX) * 0.08;
       mouseY += (targetMouseY - mouseY) * 0.08;
 
-      // Select frame based on scroll progress:
-      // Dedicate the first 75% of scrolling to animate frames 0 -> 98,
-      // and keep the final completed house frame (frame 99) locked and sustained for the last 25% of scroll (1-2s longer).
-      let frameIndex = 0;
-      if (currentProgress < 0.75) {
-        frameIndex = Math.floor((currentProgress / 0.75) * (TOTAL_FRAMES - 1));
-      } else {
-        frameIndex = TOTAL_FRAMES - 1; // Sustained final frame
-      }
-      frameIndex = Math.min(TOTAL_FRAMES - 1, Math.max(0, frameIndex));
+      // Dedicate the scroll directly to scrubbing the frames 0 -> 99 smoothly
+      const frameIndex = Math.min(
+        TOTAL_FRAMES - 1,
+        Math.max(0, Math.floor(currentProgress * (TOTAL_FRAMES - 1)))
+      );
       const img = imagesRef.current[frameIndex];
 
       if (img && img.complete) {
@@ -99,13 +94,13 @@ export const HeroSection: React.FC = () => {
         ctx.drawImage(img, offsetX, offsetY, drawW, drawH);
       }
 
-      // Text emerges and becomes prominently visible at the final finished house frames
+      // Text emerges and becomes prominently visible as user scrolls through the build
       if (contentRef.current) {
-        const revealFactor = Math.max(0, Math.min(1, (currentProgress - 0.55) / 0.25));
-        const textTranslateY = (1 - revealFactor) * 35;
+        const revealFactor = Math.max(0, Math.min(1, (currentProgress - 0.25) / 0.35));
+        const textTranslateY = (1 - revealFactor) * 25;
         
         contentRef.current.style.opacity = revealFactor.toFixed(3);
-        contentRef.current.style.pointerEvents = revealFactor > 0.5 ? "auto" : "none";
+        contentRef.current.style.pointerEvents = revealFactor > 0.3 ? "auto" : "none";
         contentRef.current.style.transform = `translate3d(${mouseX * 8}px, ${mouseY * 8 + textTranslateY}px, 0)`;
       }
 
@@ -126,7 +121,7 @@ export const HeroSection: React.FC = () => {
     <div
       id="hero"
       ref={containerRef}
-      className="relative w-full h-[220vh] bg-[#DDD4C4]"
+      className="relative w-full h-[150vh] bg-black"
     >
       {/* Pinned Sticky Viewport Stage — Pure, high-contrast, zero cream tinting over the video */}
       <div className="sticky top-0 left-0 w-full h-screen overflow-hidden flex flex-col justify-between">
