@@ -42,12 +42,12 @@ export const App: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#DDD4C4] text-[#0A0908] flex flex-col font-sans selection:bg-[#9E7844]/30 selection:text-[#0A0908] overflow-x-hidden w-full max-w-full">
+    <div className="min-h-screen bg-[#DDD4C4] text-[#0A0908] flex flex-col font-sans selection:bg-[#9E7844]/30 selection:text-[#0A0908]">
       {/* Fixed Header */}
       <Navigation />
 
       {/* Main Page Flow */}
-      <main className="flex-1 w-full overflow-x-hidden">
+      <main className="flex-1">
         {/* Section 1: Hero with cinematic video */}
         <HeroSection />
 
