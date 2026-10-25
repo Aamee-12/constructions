@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* Rich Warm Sandstone & Travertine Cream (2-3 Shades Deeper) */
+    --bg-main: #DDD4C4;
+    --bg-secondary: #D0C5B2;
+    --text-primary: #0A0908;
+    --text-secondary: #332E27;
+    --accent-olive: #66705D;
+    --accent-bronze: #9E7844;
+    --border-subtle: rgba(28, 26, 23, 0.16);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: #DDD4C4;
+    color: #0A0908;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+
+  body {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    background-color: #DDD4C4;
+    color: #0A0908;
+  }
+
+  /* Refined architectural typography */
+  .font-serif {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+  }
+
+  .font-sans {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #DDD4C4;
+}
+::-webkit-scrollbar-thumb {
+  background: #B8AC97;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #9E7844;
+}
+
+/* Travertine Glassmorphism utility */
+.glass-panel {
+  background: rgba(221, 212, 196, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(28, 26, 23, 0.14);
+}
+
+.glass-panel-dark {
+  background: rgba(208, 197, 178, 0.9);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(28, 26, 23, 0.16);
+}
+
+/* Infinite Marquee Animation for Partners */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}

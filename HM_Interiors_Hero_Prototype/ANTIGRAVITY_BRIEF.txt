@@ -1,0 +1,21 @@
+ANTIGRAVITY IMPLEMENTATION BRIEF — HM INTERIORS
+
+Use the supplied `index.html` prototype as the primary reference for the hero section's visual direction and interaction. Inspect it and run it before making changes.
+
+Recreate and integrate the experience into the current project rather than merely embedding a screenshot:
+- The main hero is a pinned, scroll-driven architectural sequence.
+- Glass facade panels enter from the sides; structure, slabs, walls, roof and windows assemble into a modern luxury house.
+- Scrolling progresses through exterior reveal, architectural cutaway/interior reveal, and a finished-home composition.
+- The animation reverses naturally when scrolling upward.
+- Headline and scene descriptions transition in sync with the scroll timeline.
+- Keep the visual art direction warm, minimal, editorial, and luxurious.
+- Continue with clean Services, Projects, Process, and Contact sections as shown in the prototype.
+- Keep HM Interiors, all copy, colors, project data, and contact details temporary and centralized in configuration.
+- Do not invent client details. Do not represent placeholder project visuals as completed client work.
+- The contact form must not claim to send submissions until a backend/form provider is connected.
+
+Important: the included procedural Three.js house is a proof of concept. For production quality, use a properly modeled, optimized GLB/GLTF house with separate animatable facade panels, roof, walls, floors, and interior objects. If no suitable model is available, keep the procedural model as a fallback and clearly separate the model-loading code so a proper asset can be swapped in later.
+
+First inspect the existing project and preserve its framework and working setup. Then implement the experience using the most suitable approach already present, or Three.js/React Three Fiber plus GSAP ScrollTrigger if the project is React-based. Avoid unnecessary rewrites, duplicate libraries, and unrelated changes.
+
+Test actual scrolling, reverse scrolling, responsive layouts, reduced-motion behaviour, loading failure, and browser console errors. Deliver a working implementation, not a static mockup. Summarize changed files and any asset/backend steps still required.

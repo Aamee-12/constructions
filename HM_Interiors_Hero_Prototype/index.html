@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#eeeae2" />
+<title>HM Interiors — Architectural Experience Prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#eeeae2;--ink:#252722;--muted:#716f67;--line:rgba(37,39,34,.18);--serif:"Playfair Display",Georgia,serif;--sans:"DM Sans",Arial,sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--paper)}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.site-header{position:fixed;z-index:20;top:0;left:0;width:100%;padding:24px 5vw;display:flex;align-items:center;justify-content:space-between;color:#262722;mix-blend-mode:normal;transition:background .3s,padding .3s}
+.site-header.scrolled{background:rgba(238,234,226,.88);backdrop-filter:blur(14px);padding-top:16px;padding-bottom:16px;border-bottom:1px solid rgba(37,39,34,.08)}
+.wordmark{font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:600}
+.nav{display:flex;gap:28px;align-items:center;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.nav a{opacity:.8;transition:opacity .2s}.nav a:hover{opacity:1}
+.nav .nav-cta{border:1px solid rgba(37,39,34,.45);padding:12px 16px}
+.menu-toggle{display:none;border:0;background:none;font:inherit;text-transform:uppercase;letter-spacing:.12em;font-size:11px}
+.scroll-stage{height:520vh;position:relative}
+.stage-sticky{position:sticky;top:0;height:100svh;min-height:600px;overflow:hidden;background:radial-gradient(ellipse at 50% 47%,#f8f5ef 0%,#eeeae2 54%,#e6e0d5 100%)}
+.stage-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero-vignette{pointer-events:none;position:absolute;inset:0;background:linear-gradient(90deg,rgba(238,234,226,.72),transparent 33%,transparent 67%,rgba(238,234,226,.5)),linear-gradient(0deg,rgba(238,234,226,.78),transparent 27%,transparent 80%,rgba(238,234,226,.38))}
+.hero-copy{position:absolute;z-index:3;left:8vw;top:27%;width:min(370px,34vw);pointer-events:none}
+.eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:.22em;color:#77766d;margin:0 0 22px}
+h1,h2{font-family:var(--serif);font-weight:400;letter-spacing:-.045em}
+h1{font-size:clamp(48px,6.2vw,90px);line-height:.99;margin:0 0 22px}
+.hero-copy p:not(.eyebrow){font-size:13px;line-height:1.8;color:#66665e;max-width:300px;margin:0}
+.hero-cta{pointer-events:auto;display:inline-flex;margin-top:28px;border-bottom:1px solid #34352e;padding-bottom:9px;font-size:10px;text-transform:uppercase;letter-spacing:.16em;gap:18px}
+.hero-meta{position:absolute;z-index:3;left:5vw;right:5vw;bottom:28px;display:flex;justify-content:space-between;align-items:end;font-size:9px;text-transform:uppercase;letter-spacing:.16em;color:#66665e}
+.scroll-cue{display:flex;align-items:center;gap:12px}.scroll-line{width:44px;height:1px;background:#77766d;transform-origin:left;animation:cue 1.8s ease-in-out infinite}
+@keyframes cue{0%,100%{transform:scaleX(.45);opacity:.4}50%{transform:scaleX(1);opacity:1}}
+.scene-label{position:absolute;right:7vw;top:27%;z-index:3;text-align:right;max-width:230px;opacity:0;transform:translateY(12px);transition:opacity .35s,transform .35s;pointer-events:none}
+.scene-label.visible{opacity:1;transform:translateY(0)}
+.scene-label .eyebrow{margin-bottom:12px}.scene-label h2{font-size:clamp(28px,3vw,42px);line-height:1.05;margin:0 0 12px}.scene-label p{font-size:11px;line-height:1.7;color:#68675f;margin:0}
+.progress-wrap{position:absolute;z-index:4;bottom:0;left:0;width:100%;height:2px;background:rgba(37,39,34,.08)}.progress-bar{height:100%;width:0;background:#666b5b}
+.section{padding:130px 8vw}
+.section-head{display:flex;justify-content:space-between;gap:40px;align-items:end;margin-bottom:58px}
+.section h2{font-size:clamp(42px,6vw,76px);line-height:1.02;margin:0;max-width:660px}
+.section-intro{max-width:300px;color:var(--muted);font-size:13px;line-height:1.85}
+.services{background:#e4dfd5}
+.service-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line)}
+.service{padding:25px 20px 26px 0;border-bottom:1px solid var(--line);min-height:205px}
+.service .num{font-size:10px;letter-spacing:.15em;color:#88857b}
+.service h3{font-family:var(--serif);font-size:26px;font-weight:400;margin:35px 0 12px}
+.service p{font-size:12px;line-height:1.8;color:var(--muted);max-width:220px}
+.portfolio{background:#f4f1eb}
+.project-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:24px}
+.project{position:relative;min-height:360px;overflow:hidden;background:#d8d1c5}
+.project:nth-child(2){margin-top:100px}
+.project-art{position:absolute;inset:0;background:linear-gradient(140deg,rgba(42,45,39,.02),rgba(42,45,39,.24)),linear-gradient(0deg,rgba(32,34,30,.35),transparent 58%),#d5cfc3}
+.project-art:before{content:"";position:absolute;left:20%;right:14%;bottom:0;height:74%;background:linear-gradient(90deg,#b9b3a8 0 26%,#e6e1d8 26% 66%,#9d9b8e 66%);clip-path:polygon(0 18%,52% 0,100% 17%,100% 100%,0 100%);box-shadow:0 15px 35px #7772}
+.project-art:after{content:"";position:absolute;left:35%;right:29%;bottom:0;height:49%;background:repeating-linear-gradient(90deg,transparent 0 28px,rgba(47,55,52,.45) 29px 31px),linear-gradient(90deg,#6e7a76,#d7d2c8);opacity:.8}
+.project:nth-child(2) .project-art{background:linear-gradient(145deg,#c4b9a8,#e9e2d6)}
+.project:nth-child(2) .project-art:before{left:10%;right:8%;height:66%;background:linear-gradient(90deg,#a9a293,#e6e0d5 45%,#b8b1a3);clip-path:polygon(0 14%,50% 0,100% 14%,100% 100%,0 100%)}
+.project-caption{position:absolute;z-index:2;left:26px;right:26px;bottom:24px;display:flex;justify-content:space-between;align-items:end;color:white}
+.project-caption small{font-size:9px;letter-spacing:.16em;text-transform:uppercase}.project-caption h3{font-family:var(--serif);font-size:27px;font-weight:400;margin:8px 0 0}
+.process{background:#252722;color:#f3f0e9}
+.process .section-intro{color:#bcb9af}
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;border-top:1px solid rgba(255,255,255,.25);padding-top:26px}
+.process-step .num{font-size:10px;letter-spacing:.16em;color:#c5bda9}
+.process-step h3{font-family:var(--serif);font-size:27px;font-weight:400;margin:30px 0 12px}
+.process-step p{font-size:12px;line-height:1.8;color:#bcb9af;max-width:230px}
+.contact{background:#e5dfd4}
+.contact-inner{display:grid;grid-template-columns:1fr .75fr;gap:12vw}
+.contact h2{font-size:clamp(46px,7vw,88px);max-width:550px}
+.contact p{font-size:13px;line-height:1.8;color:var(--muted);max-width:330px}
+.contact-form{display:grid;gap:20px;padding-top:12px}
+.contact-form label{font-size:10px;text-transform:uppercase;letter-spacing:.14em;color:#66665e}
+.contact-form input,.contact-form textarea,.contact-form select{display:block;width:100%;border:0;border-bottom:1px solid rgba(37,39,34,.32);background:transparent;border-radius:0;padding:12px 0;font:13px var(--sans);color:var(--ink);outline:none}
+.contact-form textarea{min-height:76px;resize:vertical}
+.contact-form button{justify-self:start;border:1px solid var(--ink);background:var(--ink);color:white;padding:15px 22px;font:10px var(--sans);text-transform:uppercase;letter-spacing:.16em;cursor:pointer}
+.form-note{font-size:11px;color:var(--muted);line-height:1.6}
+footer{padding:30px 5vw;background:#252722;color:#f3f0e9;display:flex;justify-content:space-between;gap:20px;font-size:9px;letter-spacing:.13em;text-transform:uppercase}
+@media(max-width:800px){
+ .site-header{padding:18px 6vw}.nav{display:none}.menu-toggle{display:block}
+ .scroll-stage{height:430vh}.stage-sticky{min-height:540px}
+ .hero-copy{left:7vw;top:17%;width:75vw}.hero-copy h1{font-size:clamp(46px,12vw,72px);max-width:340px}
+ .hero-copy p:not(.eyebrow){max-width:250px;font-size:12px}
+ .scene-label{right:7vw;top:auto;bottom:18%;max-width:210px}
+ .hero-vignette{background:linear-gradient(0deg,rgba(238,234,226,.88),transparent 50%,rgba(238,234,226,.18))}
+ .hero-meta{left:6vw;right:6vw;bottom:20px;font-size:8px}
+ .section{padding:85px 7vw}.section-head{display:block;margin-bottom:38px}.section-intro{margin-top:24px}
+ .service-grid{grid-template-columns:repeat(2,1fr);column-gap:22px}
+ .service{min-height:180px}.service h3{font-size:23px;margin-top:26px}
+ .project-grid{grid-template-columns:1fr}.project{min-height:300px}.project:nth-child(2){margin-top:0}
+ .process-grid{grid-template-columns:repeat(2,1fr);row-gap:34px}
+ .contact-inner{grid-template-columns:1fr;gap:32px}
+ footer{flex-direction:column;line-height:1.8}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<header class="site-header" id="siteHeader">
+  <a class="wordmark" href="#top" aria-label="HM Interiors home">HM / INTERIORS</a>
+  <nav class="nav" aria-label="Main navigation">
+    <a href="#about">Approach</a><a href="#services">Services</a><a href="#projects">Projects</a><a href="#contact" class="nav-cta">Start a project ↗</a>
+  </nav>
+  <button class="menu-toggle" onclick="document.querySelector('#contact').scrollIntoView({behavior:'smooth'})">Contact ↗</button>
+</header>
+
+<main id="top">
+<section class="scroll-stage" id="heroExperience" aria-label="Scroll-driven architectural house experience">
+  <div class="stage-sticky">
+    <canvas class="stage-canvas" id="scene" aria-label="A 3D architectural house assembles as you scroll"></canvas>
+    <div class="hero-vignette"></div>
+    <div class="hero-copy" id="heroCopy">
+      <p class="eyebrow">Architecture · Interiors · Construction</p>
+      <h1>Spaces made<br>to feel like<br><em>you.</em></h1>
+      <p>Thoughtful architecture. Considered interiors. A home brought to life, detail by detail.</p>
+      <a class="hero-cta" href="#services">Explore our approach <span>↘</span></a>
+    </div>
+    <div class="scene-label" id="sceneLabel">
+      <p class="eyebrow" id="sceneEyebrow">02 / The exterior</p>
+      <h2 id="sceneTitle">Form meets<br>feeling.</h2>
+      <p id="sceneText">Natural materials, considered proportions, and light that changes the way a space feels.</p>
+    </div>
+    <div class="hero-meta"><span id="sceneCounter">01 — In the making</span><span class="scroll-cue"><span>Scroll to build</span><i class="scroll-line"></i></span><span>HM / 001</span></div>
+    <div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="section-head">
+    <div><p class="eyebrow">A considered approach</p><h2>From first lines<br>to final details.</h2></div>
+    <p class="section-intro">A home is more than the sum of its materials. It's the way the light falls, how a room moves, and how every detail belongs. Our approach brings the bigger picture and the smallest details together.</p>
+  </div>
+</section>
+
+<section class="section services" id="services">
+  <div class="section-head">
+    <div><p class="eyebrow">What we do</p><h2>Every layer,<br>thought through.</h2></div>
+    <p class="section-intro">A considered design-and-build approach, shaped around the space, the people who use it, and the way they want to live.</p>
+  </div>
+  <div class="service-grid">
+    <article class="service"><span class="num">01 / PLAN</span><h3>Architecture</h3><p>Spatial planning, proportions, and a strong architectural foundation.</p></article>
+    <article class="service"><span class="num">02 / SHAPE</span><h3>Interiors</h3><p>Materials, furniture, lighting, and details that work together.</p></article>
+    <article class="service"><span class="num">03 / BUILD</span><h3>Construction</h3><p>Turning an approved vision into a considered, tangible space.</p></article>
+    <article class="service"><span class="num">04 / RENEW</span><h3>Renovation</h3><p>Reimagining existing spaces with a clearer sense of purpose.</p></article>
+  </div>
+</section>
+
+<section class="section portfolio" id="projects">
+  <div class="section-head">
+    <div><p class="eyebrow">Selected spaces / preview</p><h2>Designed around<br>the way we live.</h2></div>
+    <p class="section-intro">A placeholder portfolio layout for future approved projects. Replace these sample visuals with the client's own photography before launch.</p>
+  </div>
+  <div class="project-grid">
+    <article class="project"><div class="project-art"></div><div class="project-caption"><div><small>Residential · Concept visual</small><h3>The Courtyard House</h3></div><span>↗</span></div></article>
+    <article class="project"><div class="project-art"></div><div class="project-caption"><div><small>Interiors · Concept visual</small><h3>Quiet Materiality</h3></div><span>↗</span></div></article>
+  </div>
+</section>
+
+<section class="section process" id="approach">
+  <div class="section-head">
+    <div><p class="eyebrow">The process</p><h2>Clear thinking.<br>Careful making.</h2></div>
+    <p class="section-intro">A simple framework for moving from an early idea to a finished space. The exact process can be tailored to the services confirmed by the client.</p>
+  </div>
+  <div class="process-grid">
+    <article class="process-step"><span class="num">01</span><h3>Discover</h3><p>Understand your needs, lifestyle, space, and priorities.</p></article>
+    <article class="process-step"><span class="num">02</span><h3>Design</h3><p>Explore layouts, materials, mood, and design direction.</p></article>
+    <article class="process-step"><span class="num">03</span><h3>Bring to life</h3><p>Coordinate the approved design and the work needed to realise it.</p></article>
+    <article class="process-step"><span class="num">04</span><h3>Refine</h3><p>Focus on finishing details and the final experience of the space.</p></article>
+  </div>
+</section>
+
+<section class="section contact" id="contact">
+  <div class="contact-inner">
+    <div><p class="eyebrow">Start a conversation</p><h2>Have a space<br>in mind?</h2><p>Tell us a little about what you're imagining. We'll use this space for the confirmed contact details and project enquiry process.</p></div>
+    <form class="contact-form" id="contactForm">
+      <label>Your name<input required name="name" placeholder="Full name"></label>
+      <label>Email address<input required type="email" name="email" placeholder="you@example.com"></label>
+      <label>What are you planning?
+        <select name="projectType"><option>Residential construction</option><option>Interior design</option><option>Renovation</option><option>Other</option></select>
+      </label>
+      <label>A little about your project<textarea required name="message" placeholder="Tell us what you have in mind..."></textarea></label>
+      <button type="submit">Prepare enquiry ↗</button>
+      <div class="form-note" id="formNote">Prototype only: this form does not send messages yet. Connect a form service or backend before launch.</div>
+    </form>
+  </div>
+</section>
+</main>
+<footer><span>HM / INTERIORS — TEMPORARY BRANDING</span><span>Architecture · Interiors · Construction</span><span>© <span id="year"></span> HM Interiors</span></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(() => {
+  const canvas = document.getElementById('scene');
+  const stage = document.getElementById('heroExperience');
+  const header = document.getElementById('siteHeader');
+  const progressBar = document.getElementById('progressBar');
+  const label = document.getElementById('sceneLabel');
+  const counter = document.getElementById('sceneCounter');
+  const title = document.getElementById('sceneTitle');
+  const eyebrow = document.getElementById('sceneEyebrow');
+  const sceneText = document.getElementById('sceneText');
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  if (!window.THREE) {
+    canvas.style.display = 'none';
+    document.querySelector('.stage-sticky').style.background = 'linear-gradient(135deg,#eeeae2,#d8d1c5)';
+    return;
+  }
+
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true, powerPreference:'high-performance'});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.7));
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.outputEncoding = THREE.sRGBEncoding;
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+  const scene = new THREE.Scene();
+  scene.background = null;
+  const camera = new THREE.PerspectiveCamera(34, window.innerWidth/window.innerHeight, .1, 100);
+  camera.position.set(8,6,11);
+  const target = new THREE.Vector3(0,1.5,0);
+
+  scene.add(new THREE.HemisphereLight(0xf8f3e8,0x77756d,2.0));
+  const sun = new THREE.DirectionalLight(0xffedcf,3.0); sun.position.set(-5,9,7); sun.castShadow=true; sun.shadow.mapSize.set(1024,1024); scene.add(sun);
+  const fill = new THREE.DirectionalLight(0xd9e6eb,1.1); fill.position.set(7,5,-5); scene.add(fill);
+
+  const mat = (color, roughness=.7, metalness=0) => new THREE.MeshStandardMaterial({color,roughness,metalness});
+  const concrete = mat(0xc7c1b6,.9), paleStone=mat(0xded8cd,.85), dark=mat(0x414640,.5,.2);
+  const wood=mat(0x9b7654,.65), floorMat=mat(0xb7a58c,.7), frameMat=mat(0x555b57,.32,.35);
+  const glassMat = new THREE.MeshPhysicalMaterial({color:0xb8d1d0,roughness:.12,metalness:.05,transparent:true,opacity:.43,transmission:.18,thickness:.15});
+  const warmGlass = new THREE.MeshStandardMaterial({color:0xe9cfa2,emissive:0x7b5123,emissiveIntensity:.24,roughness:.25,transparent:true,opacity:.78});
+  const groundMat = new THREE.MeshStandardMaterial({color:0xe3ded4,roughness:1});
+  const house = new THREE.Group(); scene.add(house);
+  const glassPanels = new THREE.Group(); house.add(glassPanels);
+  const buildPieces = [];
+  function addBox(parent, name, size, material, pos, opts={}) {
+    const mesh = new THREE.Mesh(new THREE.BoxGeometry(...size), material);
+    mesh.name=name; mesh.position.set(...pos); mesh.castShadow=true; mesh.receiveShadow=true;
+    if(opts.rotation) mesh.rotation.set(...opts.rotation);
+    parent.add(mesh);
+    if(opts.build) buildPieces.push({mesh, final:mesh.position.clone(), finalRot:mesh.rotation.clone(), offset:opts.offset||[0,0,0]});
+    return mesh;
+  }
+  // Ground plinth
+  addBox(house,'site-plinth',[8.2,.18,5.9],groundMat,[0,-.08,0]);
+  // Main floor slab
+  addBox(house,'ground-floor',[6.2,.22,4.25],concrete,[0,.18,0],{build:true,offset:[0,-2.5,0]});
+  // Upper slab
+  addBox(house,'upper-floor',[6.2,.18,4.25],paleStone,[0,3.0,0],{build:true,offset:[0,3.3,0]});
+  // Main architectural walls and core
+  addBox(house,'rear-wall',[6.0,2.8,.18],paleStone,[0,1.65,-2.0],{build:true,offset:[0,1.8,-.8]});
+  addBox(house,'left-wall',[.18,2.8,4.1],concrete,[-3.0,1.65,0],{build:true,offset:[-2.5,0,0]});
+  addBox(house,'right-core',[.22,2.8,2.1],concrete,[2.9,1.65,-.95],{build:true,offset:[2.5,0,0]});
+  addBox(house,'upper-rear-wall',[6.0,2.35,.16],paleStone,[0,4.25,-2.0],{build:true,offset:[0,2.2,-.8]});
+  addBox(house,'upper-left-wall',[.16,2.35,4.0],paleStone,[-3.0,4.25,0],{build:true,offset:[-2.5,0,0]});
+  // Roof plane and overhang
+  addBox(house,'roof',[6.8,.22,4.8],dark,[0,5.55,0],{build:true,offset:[0,3.6,0]});
+  // Glass facade panels that enter from outside edges
+  const facadePositions=[[-2.05,1.62,2.08],[ -.72,1.62,2.08],[.72,1.62,2.08],[2.05,1.62,2.08]];
+  facadePositions.forEach((p,i)=>{
+    const g=addBox(glassPanels,'glass-panel-'+i,[1.26,2.55,.055],glassMat,p,{build:true,offset:[i<2?-7:7,0,0]});
+    addBox(glassPanels,'glass-frame-'+i,[.035,2.62,.075],frameMat,[p[0]-.61,p[1],p[2]+.02],{build:true,offset:[i<2?-7:7,0,0]});
+    addBox(glassPanels,'glass-frame-v-'+i,[.035,2.62,.075],frameMat,[p[0]+.61,p[1],p[2]+.02],{build:true,offset:[i<2?-7:7,0,0]});
+  });
+  // Upper glass balustrade and windows
+  for(let i=0;i<4;i++){
+    const x=-2.25+i*1.5;
+    addBox(glassPanels,'upper-glass-'+i,[1.42,1.35,.045],glassMat,[x,4.05,2.02],{build:true,offset:[i<2?-6:6,0,0]});
+    addBox(glassPanels,'upper-frame-'+i,[.035,1.42,.07],frameMat,[x-.69,4.05,2.05],{build:true,offset:[i<2?-6:6,0,0]});
+  }
+  // Interior elements visible through facade
+  const interior = new THREE.Group(); house.add(interior);
+  addBox(interior,'living-rug',[2.3,.035,1.7],mat(0xd4c8b7,.95),[-.8,.33,.5]);
+  addBox(interior,'sofa-base',[1.65,.35,.65],mat(0xb5aa9a,.9),[-.85,.55,.45]);
+  addBox(interior,'sofa-back',[1.65,.55,.2],mat(0xc6b9a7,.9),[-.85,.9,.15]);
+  addBox(interior,'coffee-table',[.9,.12,.55],wood,[-.65,.56,1.0]);
+  addBox(interior,'kitchen-island',[1.7,.9,.7],paleStone,[1.55,.75,-.65]);
+  addBox(interior,'island-top',[1.82,.09,.8],mat(0xf0ece4,.4),[1.55,1.24,-.65]);
+  addBox(interior,'upper-bed-base',[1.7,.35,2.1],wood,[.4,3.27,-.5]);
+  addBox(interior,'upper-bed-mattress',[1.65,.18,1.95],mat(0xe4ddd2,.9),[.4,3.52,-.5]);
+  addBox(interior,'bed-headboard',[1.8,.8,.12],wood,[.4,3.85,-1.48]);
+  // Door / window frames
+  addBox(house,'entry-door',[.95,2.25,.08],wood,[-.45,1.34,2.13],{build:true,offset:[-3,0,0]});
+  addBox(house,'door-glass',[.64,1.8,.035],glassMat,[-.45,1.48,2.19],{build:true,offset:[-3,0,0]});
+  // Trees / landscaping as stylized silhouettes
+  const green=mat(0x818777,.95), trunk=mat(0x8a7965,.95);
+  function tree(x,z,s){
+    const group=new THREE.Group(); house.add(group); group.position.set(x,0,z); group.scale.setScalar(s);
+    const t=new THREE.Mesh(new THREE.CylinderGeometry(.07,.1,1.25,7),trunk);t.position.y=.62;t.castShadow=true;group.add(t);
+    const crown=new THREE.Mesh(new THREE.IcosahedronGeometry(.62,1),green);crown.position.y=1.55;crown.scale.set(1,1.15,1);crown.castShadow=true;group.add(crown);
+    return group;
+  }
+  const trees=[tree(-3.8,.8,.95),tree(3.7,.9,.82),tree(-3.5,-2.2,.7)];
+  trees.forEach((t,i)=>{t.scale.setScalar(.01);});
+  // Fine vertical garden strips
+  for(let i=0;i<7;i++) addBox(house,'garden-strip-'+i,[.08,.02,.8],green,[-2.8+i*.22,.3,2.85]);
+
+  // Build pieces begin displaced, then assemble through scroll timeline.
+  buildPieces.forEach(({mesh,offset})=>{mesh.position.x += offset[0];mesh.position.y += offset[1];mesh.position.z += offset[2];});
+  const initialCamera={x:8,y:6,z:11,tx:0,ty:1.5,tz:0};
+  const cam={x:initialCamera.x,y:initialCamera.y,z:initialCamera.z,tx:0,ty:1.5,tz:0};
+  function updateCamera(){camera.position.set(cam.x,cam.y,cam.z);target.set(cam.tx,cam.ty,cam.tz);camera.lookAt(target);}
+  updateCamera();
+
+  const state={build:0,orbit:0,interior:0,finish:0};
+  const timeline=gsap.timeline({paused:true});
+  timeline.to(state,{build:1,duration:1.6,ease:'power2.inOut'},0);
+  timeline.to(cam,{x:7,y:5,z:9,tx:0,ty:1.8,tz:0,duration:1.3,ease:'power2.inOut',onUpdate:updateCamera},.4);
+  timeline.to(state,{orbit:1,duration:1.2,ease:'sine.inOut'},1.2);
+  timeline.to(cam,{x:9,y:4.7,z:5.8,tx:0,ty:2.0,tz:0,duration:1.2,ease:'power1.inOut',onUpdate:updateCamera},1.4);
+  timeline.to(cam,{x:3.8,y:3.2,z:7.5,tx:0,ty:1.8,tz:0,duration:1.3,ease:'power2.inOut',onUpdate:updateCamera},2.6);
+  timeline.to(state,{interior:1,duration:1,ease:'power1.inOut'},2.8);
+  timeline.to(cam,{x:1.2,y:2.9,z:5.2,tx:0,ty:1.7,tz:.6,duration:1.2,ease:'power2.inOut',onUpdate:updateCamera},3.25);
+  timeline.to(state,{finish:1,duration:.8,ease:'power1.inOut'},4.0);
+
+  if (window.gsap && window.ScrollTrigger && !reducedMotion) {
+    gsap.registerPlugin(ScrollTrigger);
+    ScrollTrigger.create({
+      trigger:stage,start:'top top',end:'bottom bottom',scrub:1.1,
+      onUpdate:self=>{
+        timeline.progress(self.progress);
+        progressBar.style.width=(self.progress*100)+'%';
+        updateCopy(self.progress);
+      }
+    });
+  } else {
+    timeline.progress(1);
+    updateCopy(1);
+  }
+  function updateCopy(p){
+    const mobile=window.innerWidth<800;
+    const states=[
+      {a:0,b:.19,c:'01 — In the making',e:'01 / The structure',h:'Every detail<br>has a place.',t:'A home begins with proportion, structure, and the thoughtful placement of every element.'},
+      {a:.19,b:.42,c:'02 — The exterior',e:'02 / The exterior',h:'Form meets<br>feeling.',t:'Natural materials, considered proportions, and light that changes the way a space feels.'},
+      {a:.42,b:.64,c:'03 — The reveal',e:'03 / The reveal',h:'More than<br>what you see.',t:'Look beyond the facade and discover the spaces, layers, and details within.'},
+      {a:.64,b:.84,c:'04 — Inside the home',e:'04 / The interiors',h:'Made for the<br>way you live.',t:'Textures, lighting, furniture, and finishes come together to make a space feel personal.'},
+      {a:.84,b:1.01,c:'05 — The complete picture',e:'05 / The finished home',h:'A whole, considered<br>experience.',t:'Architecture and interiors, brought together with care.'}
+    ];
+    const s=states.find(x=>p>=x.a&&p<x.b)||states[states.length-1];
+    counter.textContent=s.c;eyebrow.textContent=s.e;title.innerHTML=s.h;sceneText.textContent=s.t;
+    label.classList.toggle('visible',p>.14);
+    const heroCopy=document.getElementById('heroCopy');
+    heroCopy.style.opacity=String(Math.max(0,1-Math.max(0,p-.1)*3.4));
+    heroCopy.style.transform=`translateY(${-Math.max(0,p-.08)*35}px)`;
+    if(mobile){label.style.left='7vw';label.style.right='7vw';label.style.textAlign='left';}
+    else{label.style.left='auto';label.style.right='7vw';label.style.textAlign='right';}
+  }
+
+  function render(){
+    requestAnimationFrame(render);
+    const p=ScrollTrigger && ScrollTrigger.getAll().length ? (ScrollTrigger.getAll()[0].progress||0) : 0;
+    buildPieces.forEach(({mesh,final,finalRot,offset})=>{
+      const k=gsap.utils.clamp(0,1,state.build);
+      mesh.position.set(final.x+offset[0]*(1-k),final.y+offset[1]*(1-k),final.z+offset[2]*(1-k));
+      mesh.rotation.set(finalRot.x,finalRot.y,finalRot.z);
+    });
+    trees.forEach((t,i)=>{const k=gsap.utils.clamp(0,1,(state.orbit-.05)*1.7);t.scale.setScalar([.95,.82,.7][i]*k);});
+    // Gentle architectural life: warm interior light strengthens after assembly.
+    warmGlass.emissiveIntensity=.05+.42*state.finish;
+    camera.lookAt(target);
+    renderer.render(scene,camera);
+  }
+  render();
+
+  function resize(){
+    const w=window.innerWidth,h=window.innerHeight;
+    camera.aspect=w/h;camera.fov=w<800?39:34;camera.updateProjectionMatrix();
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,w<800?1.25:1.7));
+    renderer.setSize(w,h);
+    updateCopy(stage.getBoundingClientRect().top<0?Math.min(1,Math.abs(stage.getBoundingClientRect().top)/(stage.offsetHeight-h)):0);
+  }
+  window.addEventListener('resize',resize);
+  window.addEventListener('scroll',()=>header.classList.toggle('scrolled',window.scrollY>30),{passive:true});
+
+  // Simple form prototype: explicitly does not claim to send a message.
+  document.getElementById('contactForm').addEventListener('submit',e=>{
+    e.preventDefault();
+    document.getElementById('formNote').textContent='Thanks — the form layout is working as a prototype. Connect a backend or form service to receive enquiries.';
+  });
+})();
+</script>
+</body>
+</html>
