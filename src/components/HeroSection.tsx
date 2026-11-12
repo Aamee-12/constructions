@@ -23,6 +23,12 @@ export const HeroSection: React.FC = () => (
           <a href="#enquiry" className="px-8 py-4 border border-white/60 hover:border-white text-white font-medium text-xs uppercase tracking-[0.2em] transition-colors bg-black/30 backdrop-blur">Start a Project</a>
         </div>
       </div>
+      <img
+        src="/assets/images/hero-construction-home.png"
+        alt="A home under construction beside a completed modern residence"
+        className="mt-10 md:mt-14 w-full rounded-xl object-cover shadow-2xl aspect-[16/8]"
+        loading="eager"
+      />
     </div>
   </section>
 );
