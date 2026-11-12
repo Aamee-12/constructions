@@ -1,9 +1,10 @@
 import React from "react";
+import heroBackground from "../assets/hero-construction-home.png";
 
 export const HeroSection: React.FC = () => (
-  <section id="hero" className="relative h-screen min-h-[520px] w-full overflow-hidden bg-[#141210] flex items-end">
+  <section id="hero" className="relative h-screen min-h-[520px] w-full overflow-hidden bg-transparent flex items-end">
     <img
-      src="/assets/images/hero-construction-home.png"
+      src={heroBackground}
       alt=""
       aria-hidden="true"
       fetchPriority="high"
