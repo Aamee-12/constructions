@@ -32,7 +32,7 @@ export const PricingPackagesSection: React.FC = () => {
       id: "elegance",
       name: "ELEGANCE",
       tag: "Essential Standard",
-      price: "Rs 1,779",
+      price: "Rs 1,999",
       unit: "/ Sq.Ft.",
       categories: [
         {
@@ -47,44 +47,36 @@ export const PricingPackagesSection: React.FC = () => {
         {
           title: "Structure",
           items: [
-            "Steel: A1 Gold / Kamadhenu",
-            "Cement: Zuari / Dalmia (43/53 Grade)",
-            "Aggregates: 20mm & 40mm",
-            "Blocks: Solid Concrete (6\" & 4\")",
-            "Ceiling Height: 10'0\"",
+            "Steel: Suguna / Gopala, etc.",
+            "Cement: Priya / Maharaja",
+            "Blocks: Solid Concrete (6\" / 4\")",
           ],
         },
         {
           title: "Kitchen",
           items: [
-            "Granite: Upto ₹120/sqft",
-            "Wall Tiles: Upto ₹40/sqft",
-            "Sink: SS Single (₹3,000)",
+            "Granite: Up to ₹70/sqft",
+            "Wall Tiles: Up to ₹50/sqft",
           ],
         },
         {
           title: "Bathroom",
           items: [
-            "Wall Tiles: Upto ₹40/sqft (7ft height)",
-            "Sanitary & CP Fittings: ₹16,500/bath",
-            "Doors: Flush Door (₹7,000)",
+            "Wall Tiles: Up to ₹50/sqft (7ft height)",
+            "Sanitary & CP Fittings: ₹20,000/bath",
           ],
         },
         {
           title: "Flooring & Painting",
           items: [
-            "Living Area: Vitrified (₹60/sqft)",
-            "Bedrooms: Tiles (₹60/sqft)",
-            "Interior Paint: Tractor Emulsion",
-            "Exterior Paint: Ace Exterior",
+            "Living Area: Vitrified (₹50/sqft)",
+            "Bedrooms: Tiles (₹50/sqft)",
           ],
         },
         {
           title: "Doors & Windows",
           items: [
-            "Main Door: Teak (₹20,000)",
-            "Internal Doors: Sal/Flush (₹8,000)",
-            "Windows: Aluminium 2-Track",
+            "Windows: Aluminium 2.5+ Track",
           ],
         },
       ],
@@ -93,7 +85,7 @@ export const PricingPackagesSection: React.FC = () => {
       id: "premium",
       name: "PREMIUM",
       tag: "Most Chosen",
-      price: "Rs 1,999",
+      price: "Rs 2,199",
       unit: "/ Sq.Ft.",
       isPopular: true,
       categories: [
@@ -108,43 +100,36 @@ export const PricingPackagesSection: React.FC = () => {
         {
           title: "Structure",
           items: [
-            "Steel: JSW / Tata / Vizag",
-            "Cement: Ultratech / ACC",
-            "Blocks: Standard Solid Blocks",
-            "Ceiling Height: 10'6\"",
+            "Steel: Meenakshi / Prime Gold, etc.",
+            "Cement: Birla Super / Maharaja",
+            "Blocks: Solid Concrete (6\")",
           ],
         },
         {
           title: "Kitchen",
           items: [
-            "Granite: Upto ₹160/sqft",
-            "Wall Tiles: Upto ₹60/sqft",
-            "Sink: SS / Quartz (₹6,000)",
+            "Granite: Up to ₹120–150/sqft",
+            "Wall Tiles: Up to ₹70/sqft",
           ],
         },
         {
           title: "Bathroom",
           items: [
-            "Wall Tiles: Upto ₹60/sqft (7ft height)",
-            "Sanitary & CP: ₹25,000/bath (Jaguar / Hindware)",
-            "Doors: WPC Waterproof Doors",
+            "Wall Tiles: Up to ₹70/sqft (7ft height)",
+            "Sanitary & CP Fittings: ₹30,000/bath",
           ],
         },
         {
           title: "Flooring & Painting",
           items: [
-            "Living Area: Vitrified (₹80/sqft)",
-            "Bedrooms: Vitrified (₹80/sqft)",
-            "Interior Paint: Premium Emulsion",
-            "Exterior Paint: Apex Exterior",
+            "Living Area: Vitrified (₹50/sqft)",
+            "Bedrooms: Tiles (₹50/sqft)",
           ],
         },
         {
           title: "Doors & Windows",
           items: [
-            "Main Door: Teak Wood (₹30,000)",
-            "Internal Doors: Teak Frame + Flush (₹12,000)",
-            "Windows: Premium UPVC Windows",
+            "Windows: Aluminium 2.5+ Track",
           ],
         },
       ],
@@ -153,7 +138,7 @@ export const PricingPackagesSection: React.FC = () => {
       id: "elite",
       name: "ELITE",
       tag: "Best Value",
-      price: "Rs 2,249",
+      price: "Rs 2,499",
       unit: "/ Sq.Ft.",
       categories: [
         {
@@ -167,43 +152,35 @@ export const PricingPackagesSection: React.FC = () => {
         {
           title: "Structure",
           items: [
-            "Steel: JSW / Tata (Primary Grade)",
-            "Cement: Ultratech Super",
-            "Walls: Red Bricks / Porotherm",
-            "Ceiling Height: 11'0\"",
+            "Steel: Indus, etc.",
+            "Cement: Birla Super",
+            "Blocks: Solid Concrete (6\")",
           ],
         },
         {
           title: "Kitchen",
           items: [
-            "Granite: Upto ₹200/sqft",
-            "Wall Tiles: Upto ₹90/sqft",
-            "Sink: Multi-bowl (₹10,000)",
+            "Wall Tiles: Up to ₹100/sqft",
           ],
         },
         {
           title: "Bathroom",
           items: [
-            "Wall Tiles: Upto ₹90/sqft (8ft height)",
-            "Sanitary & CP: ₹40,000/bath (Kohler / Grohe)",
-            "Glass Shower Partition: Included",
+            "Wall Tiles: Up to ₹100/sqft (7ft height)",
+            "Sanitary & CP Fittings: ₹60,000/bath (Jaguar)",
           ],
         },
         {
           title: "Flooring & Painting",
           items: [
-            "Living Area: Granite / Italian (₹140/sqft)",
-            "Bedrooms: Wooden / Vitrified (₹100/sqft)",
-            "Interior Paint: Royal Luxury Emulsion",
-            "Exterior Paint: Apex Ultima",
+            "Living Area: Vitrified (₹50/sqft)",
+            "Bedrooms: Tiles (₹50/sqft)",
           ],
         },
         {
           title: "Doors & Windows",
           items: [
-            "Main Door: Teak Wood (₹45,000)",
-            "Internal Doors: Teak Wood (₹18,000)",
-            "Windows: Premium UPVC w/ Mesh",
+            "Windows: Aluminium 3-Track",
           ],
         },
       ],

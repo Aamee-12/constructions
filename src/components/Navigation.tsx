@@ -12,6 +12,7 @@ const navLinks = [
   { label: "Packages", href: "#packages" },
   { label: "Services", href: "#services" },
   { label: "Projects", href: "#projects" },
+  { label: "Gallery", href: "/gallery" },
   { label: "Contact", href: "#enquiry" },
 ];
 
@@ -22,6 +23,7 @@ const mobileNavLinks = [
   { label: "Construction Packages", href: "#packages" },
   { label: "Practice & Services", href: "#services" },
   { label: "Selected Projects", href: "#projects" },
+  { label: "Gallery", href: "/gallery" },
   { label: "Process & Methodology", href: "#process" },
   { label: "Client Testimonials", href: "#testimonials" },
   { label: "FAQs", href: "#faq" },
@@ -58,6 +60,10 @@ export const Navigation: React.FC = () => {
 
   const handleLinkClick = (href: string) => {
     setMobileMenuOpen(false);
+    if (href.startsWith("/")) {
+      window.location.href = href;
+      return;
+    }
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });

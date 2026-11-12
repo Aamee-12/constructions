@@ -104,17 +104,8 @@ export const SITE_CONFIG = {
       highlights: ["High-Yield Spatial Layouts", "Resilient Luxury Finishes", "Turnkey Rental Readiness"]
     },
     {
-      id: "commercial-construction",
-      number: "03",
-      title: "Commercial Construction",
-      headline: "Transforming your office into a strategic asset that supports growth and innovation.",
-      description: "Modern commercial spaces and corporate headquarters built to elevate company culture, client confidence, and operational agility.",
-      image: "/assets/images/service-commercial.jpg",
-      highlights: ["Strategic Office Engineering", "Acoustic & Lighting Design", "Smart Facility Integration"]
-    },
-    {
       id: "interior-design-construction",
-      number: "04",
+      number: "03",
       title: "Interior + Design Construction",
       headline: "Where your personal home dreams find their flawless blueprint.",
       description: "Comprehensive interior styling and bespoke joinery that marries spatial comfort with tactile architectural elements, lighting, and textures.",
@@ -124,28 +115,6 @@ export const SITE_CONFIG = {
   ] as ServiceItem[],
 
   projects: [
-    {
-      id: "hotel-citadel",
-      title: "Hotel Citadel Commercial Landmark",
-      category: "Commercial Architecture",
-      description: "Multi-storey commercial hospitality landmark engineered with high-strength structural framing, bespoke exterior cladding, illuminated retail facade, and full turnkey MEP execution.",
-      location: "Bengaluru Central",
-      year: "2024",
-      area: "3,850 m²",
-      image: "/assets/projects/project_citadel.jpg",
-      featured: true
-    },
-    {
-      id: "commercial-tower",
-      title: "The Prism Commercial Tower",
-      category: "Commercial Architecture",
-      description: "Contemporary high-rise corporate tower featuring precision structural curtain-wall glazing, travertine stone panels, panoramic executive suites, and elevated deck podiums.",
-      location: "Business District",
-      year: "2025",
-      area: "5,200 m²",
-      image: "/assets/projects/project_commercial_tower.jpg",
-      featured: false
-    },
     {
       id: "gabled-stone-villa",
       title: "Gabled Heritage Stone Villa",

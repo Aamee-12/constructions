@@ -2,10 +2,9 @@ import React from "react";
 
 export const StatsClientsSection: React.FC = () => {
   const stats = [
-    { label: "Clients", value: "255+" },
-    { label: "Projects", value: "222+" },
-    { label: "Repairing", value: "755+" },
-    { label: "Awards", value: "15" },
+    { label: "Clients", value: "150+" },
+    { label: "Projects", value: "70+" },
+    { label: "Repairings", value: "15+" },
   ];
 
   // The complete suite of official builder marks (darkened & enhanced contrast)
@@ -67,7 +66,7 @@ export const StatsClientsSection: React.FC = () => {
       {/* Top Header Metrics: Centered across all screen sizes */}
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* Metric Counter Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 pb-10 border-b border-[#0A0908]/15 text-center">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-10 pb-10 border-b border-[#0A0908]/15 text-center">
           {stats.map((item, index) => (
             <div
               key={index}

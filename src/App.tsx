@@ -13,6 +13,7 @@ import { EnquirySection } from "./components/EnquirySection";
 import { FAQSection } from "./components/FAQSection";
 import { Footer } from "./components/Footer";
 import { NotFoundPage } from "./components/NotFoundPage";
+import { GalleryPage } from "./components/GalleryPage";
 
 export const App: React.FC = () => {
   const [currentPath, setCurrentPath] = useState<string>(window.location.pathname);
@@ -28,6 +29,7 @@ export const App: React.FC = () => {
 
   // Recognized routes: "/", "", or index.html
   const isHome = currentPath === "/" || currentPath === "" || currentPath === "/index.html";
+  if (currentPath === "/gallery" || currentPath === "/gallery/") return <GalleryPage />;
 
   if (!isHome) {
     return (

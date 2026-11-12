@@ -1,5 +1,4 @@
 import React from "react";
-import { ArrowUpRight } from "lucide-react";
 import { SITE_CONFIG } from "../config/siteConfig";
 
 export const IntroSection: React.FC = () => {
@@ -37,24 +36,18 @@ export const IntroSection: React.FC = () => {
       title: "We Understand Requirements",
       desc: "Every project starts with a vision, but it succeeds through listening. We know that your requirements go beyond just blueprints and materials; they are about functionality, lifestyle, and your future goals.",
       image: "/assets/images/offer-requirements.jpg",
-      actionText: "Learn More",
-      href: "#services",
     },
     {
       num: "02",
       title: "We Work Precisely",
       desc: "Once the plan is set, our team executes it with exacting attention to detail. We adhere strictly to timelines and specifications, ensuring that no corner is cut. From the first measurement to the final fitting, we maintain rigorous quality control to ensure the structure is safe, solid, and built to last.",
       image: "/assets/images/offer-precision.jpg",
-      actionText: "Learn More",
-      href: "#process",
     },
     {
       num: "03",
       title: "We Deliver Best Output",
       desc: "Our job isn’t finished until you are 100% satisfied. We take pride in handing over projects that are clean, compliant, and ready for immediate use. From the structural integrity to the final coat of paint, we ensure the finished product matches your vision perfectly and stands the test of time.",
       image: "/assets/images/offer-output.jpg",
-      actionText: "Learn More",
-      href: "#projects",
     },
   ];
 
@@ -80,6 +73,7 @@ export const IntroSection: React.FC = () => {
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl leading-[1.06] tracking-[-0.025em] text-white font-medium">
               Construct your dream home.
             </h2>
+            <p className="text-xs uppercase tracking-[0.2em] text-[#C5A880] font-semibold">Building with care since 2001</p>
 
             <p className="text-sm sm:text-base text-[#D0C8BD] leading-relaxed font-normal">
               From concept to key handover, we make your home-building journey effortless, transparent, and personalized. Whether it’s an independent home, villa, rental house, PG, or commercial space, we turn your vision into a beautifully crafted reality.
@@ -201,15 +195,6 @@ export const IntroSection: React.FC = () => {
                     </p>
                   </div>
 
-                  <div className="pt-4 border-t border-white/10">
-                    <a
-                      href={item.href}
-                      className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-semibold text-[#C5A880] hover:text-white transition-colors"
-                    >
-                      <span>{item.actionText}</span>
-                      <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                    </a>
-                  </div>
                 </div>
               </div>
             ))}
