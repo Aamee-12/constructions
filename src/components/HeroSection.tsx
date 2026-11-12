@@ -1,5 +1,5 @@
 import React from "react";
-import heroBackground from "../assets/hero-construction-home.png";
+import heroBackground from "../../From Foundation to Modern Villa.png";
 
 export const HeroSection: React.FC = () => (
   <section id="hero" className="relative h-screen min-h-[520px] w-full overflow-hidden bg-transparent flex items-end">
