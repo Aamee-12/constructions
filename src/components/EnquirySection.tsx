@@ -151,7 +151,7 @@ export const EnquirySection: React.FC = () => {
                 <div className="flex items-center gap-3">
                   <Phone className="w-4 h-4 text-[#8F6B38] shrink-0" />
                   <a
-                    href={`tel:${SITE_CONFIG.contact.phone.replace(/[^0-9+]/g, "")}`}
+                    href={`tel:+91${SITE_CONFIG.contact.phone.replace(/\D/g, "")}`}
                     className="font-bold text-[#0A0908] hover:text-[#8F6B38] transition-colors tracking-wide"
                   >
                     {SITE_CONFIG.contact.phone}
@@ -199,7 +199,7 @@ export const EnquirySection: React.FC = () => {
                     <span>Submit Another Enquiry</span>
                   </button>
                   <a
-                    href={`tel:${SITE_CONFIG.contact.phone.replace(/[^0-9+]/g, "")}`}
+                    href={`tel:+91${SITE_CONFIG.contact.phone.replace(/\D/g, "")}`}
                     className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[#8F6B38] text-[#8F6B38] hover:bg-[#8F6B38]/10 text-xs uppercase tracking-[0.18em] font-semibold transition-all cursor-pointer"
                   >
                     <Phone className="w-3.5 h-3.5" />
@@ -340,7 +340,7 @@ export const EnquirySection: React.FC = () => {
                       </label>
                       <input
                         type="tel"
-                        placeholder="+91 98868 69147"
+                        placeholder="9886869147"
                         value={formData.phone}
                         onChange={(e) => {
                           setFormData({ ...formData, phone: e.target.value });

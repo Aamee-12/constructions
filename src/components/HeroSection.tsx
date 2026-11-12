@@ -3,13 +3,15 @@ import React from "react";
 export const HeroSection: React.FC = () => (
   <section
     id="hero"
-    className="relative min-h-[88vh] flex items-end overflow-hidden bg-[#141210]"
-    style={{
-      backgroundImage: "linear-gradient(to top, rgba(0,0,0,.78), rgba(0,0,0,.08) 70%), url('/assets/images/hero-construction-home.png')",
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-    }}
+    className="relative min-h-[100svh] flex items-end overflow-hidden bg-[#141210]"
   >
+    <img
+      src="/assets/images/hero-construction-home.png"
+      alt="A home under construction beside a completed modern residence"
+      className="absolute inset-0 h-full w-full object-cover object-center"
+      fetchPriority="high"
+    />
+    <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-black/5" />
     <div className="relative z-10 max-w-7xl mx-auto w-full px-6 md:px-12 pt-36 pb-16 md:pb-24">
       <div className="max-w-3xl space-y-6">
         <div className="inline-flex items-center gap-3">

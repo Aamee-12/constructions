@@ -110,7 +110,7 @@ export const Footer: React.FC = () => {
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-[#D4AF50] shrink-0" />
                 <a
-                  href={`tel:${SITE_CONFIG.contact.phone.replace(/[^0-9+]/g, "")}`}
+                  href={`tel:+91${SITE_CONFIG.contact.phone.replace(/\D/g, "")}`}
                   className="text-white font-semibold hover:text-[#D4AF50] transition-colors tracking-wide"
                   title="Call HM Constructions"
                 >

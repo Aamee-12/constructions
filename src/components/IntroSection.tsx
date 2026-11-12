@@ -73,7 +73,7 @@ export const IntroSection: React.FC = () => {
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl leading-[1.06] tracking-[-0.025em] text-white font-medium">
               Construct your dream home.
             </h2>
-            <p className="text-xs uppercase tracking-[0.2em] text-[#C5A880] font-semibold">Building with care since 2001</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-[#C5A880] font-semibold">Started in 2001</p>
 
             <p className="text-sm sm:text-base text-[#D0C8BD] leading-relaxed font-normal">
               From concept to key handover, we make your home-building journey effortless, transparent, and personalized. Whether it’s an independent home, villa, rental house, PG, or commercial space, we turn your vision into a beautifully crafted reality.

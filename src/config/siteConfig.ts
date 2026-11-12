@@ -68,7 +68,7 @@ export const SITE_CONFIG = {
   // Official Contact Details
   contact: {
     email: "",
-    phone: "+91 98868 69147",
+    phone: "9886869147",
     address: "547, 10th main, 2nd Cross Rd, HBR Layout 4th Block, Bengaluru, Karnataka 560043",
     hours: "Monday – Saturday: 09:30 — 19:00",
     notice: "Licensed Architectural Firm & Turnkey Construction Practice"
@@ -78,7 +78,9 @@ export const SITE_CONFIG = {
     { label: "Home", href: "#hero" },
     { label: "About", href: "#about" },
     { label: "Packages", href: "#packages" },
+    { label: "Services", href: "#services" },
     { label: "Projects", href: "#projects" },
+    { label: "Gallery", href: "/gallery" },
     { label: "Process", href: "#process" },
     { label: "Reviews", href: "#testimonials" },
     { label: "Contact", href: "#enquiry" }

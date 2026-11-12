@@ -234,7 +234,7 @@ export const Navigation: React.FC = () => {
             {/* Clickable Phone Number */}
             <div className="flex items-center justify-center gap-4 text-xs">
               <a
-                href={`tel:${SITE_CONFIG.contact.phone.replace(/[^0-9+]/g, "")}`}
+                href={`tel:+91${SITE_CONFIG.contact.phone.replace(/\D/g, "")}`}
                 className="inline-flex items-center gap-2 py-2 px-3 rounded-full text-[#D4AF50] hover:text-white transition-colors border border-[#D4AF50]/30"
                 title="Call Directly"
               >
