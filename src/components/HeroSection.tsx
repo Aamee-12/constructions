@@ -1,5 +1,5 @@
 import React from "react";
-import heroBackground from "../../From Foundation to Modern Villa.png";
+import heroBackground from "../../public/assets/images/hero-foundation-villa.webp";
 
 export const HeroSection: React.FC = () => (
   <section
