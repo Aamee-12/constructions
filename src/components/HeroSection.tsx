@@ -2,14 +2,11 @@ import React from "react";
 import heroBackground from "../../From Foundation to Modern Villa.png";
 
 export const HeroSection: React.FC = () => (
-  <section id="hero" className="relative h-screen min-h-[520px] w-full overflow-hidden bg-transparent flex items-end">
-    <img
-      src={heroBackground}
-      alt=""
-      aria-hidden="true"
-      fetchPriority="high"
-      className="absolute inset-0 block h-full w-full object-cover object-center"
-    />
+  <section
+    id="hero"
+    className="relative h-[100svh] min-h-[520px] w-full overflow-hidden flex items-end bg-cover bg-center bg-no-repeat"
+    style={{ backgroundImage: `url("${heroBackground}")` }}
+  >
     <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 pt-36 pb-16 md:pb-24">
       <div className="max-w-3xl space-y-6">
         <div className="inline-flex items-center gap-3">
