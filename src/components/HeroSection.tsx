@@ -1,34 +1,50 @@
 import React from "react";
-import heroBackground from "../../public/assets/images/hero-foundation-villa.webp";
+import heroHome from "../../public/assets/images/hero-home-solution.webp";
 
 export const HeroSection: React.FC = () => (
   <section
     id="hero"
-    className="relative w-full overflow-hidden flex items-end bg-transparent"
-    style={{ height: "100vh", minHeight: "520px" }}
+    className="relative isolate w-full overflow-hidden bg-[#171511] text-white"
+    style={{ minHeight: "100vh" }}
   >
-    <img
-      src={heroBackground}
-      alt=""
+    {/* Keep the floating navigation legible while letting the hero photo stay bright. */}
+    <div
       aria-hidden="true"
-      fetchPriority="high"
-      style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
+      className="pointer-events-none absolute inset-x-0 top-0 z-0 h-44 bg-gradient-to-b from-black/65 via-black/25 to-transparent"
     />
-    <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 pt-36 pb-16 md:pb-24">
-      <div className="w-fit max-w-full space-y-6">
+    <div className="relative z-10 mx-auto grid min-h-screen w-full max-w-7xl items-center gap-10 px-6 pb-16 pt-32 md:px-12 md:pb-20 lg:grid-cols-[1fr_0.95fr] lg:gap-14">
+      <div className="max-w-2xl space-y-6 md:space-y-7">
         <div className="inline-flex items-center gap-3">
-          <span className="w-8 h-[2px] bg-[#C59A5A]" />
-          <span className="text-[11px] md:text-xs uppercase tracking-[0.28em] text-white font-semibold">INTERIORS · CONSTRUCTION</span>
+          <span className="h-[2px] w-8 bg-[#C59A5A]" />
+          <span className="text-[11px] font-semibold uppercase tracking-[0.28em] text-white md:text-xs">
+            INTERIORS · CONSTRUCTION
+          </span>
         </div>
-        <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl leading-[0.98] tracking-[-0.03em] text-white max-w-3xl">
-          Architecture that feels like home.
+        <h1 className="max-w-2xl font-serif text-5xl leading-[0.98] tracking-[-0.03em] text-white md:text-6xl lg:text-7xl">
+          From Foundation to Finish — Your Complete Home Solution.
         </h1>
-        <p className="text-[#F5F2EC] text-base md:text-xl leading-relaxed max-w-xl">
-          Thoughtfully designed homes, built with care from the first sketch to the final handover.
+        <p className="max-w-xl text-base leading-relaxed text-[#F5F2EC] md:text-xl">
+          One team. Every step. Your dream home.
         </p>
         <div className="flex flex-wrap items-center gap-4 pt-2">
-          <a href="#projects" className="px-8 py-4 bg-[#C59A5A] hover:bg-[#b08544] text-[#141210] font-semibold text-xs uppercase tracking-[0.2em] transition-colors">Explore Projects</a>
-          <a href="#enquiry" className="px-8 py-4 text-white font-medium text-xs uppercase tracking-[0.2em] transition-colors hover:text-[#C59A5A]">Start a Project</a>
+          <a href="#projects" className="bg-[#C59A5A] px-8 py-4 text-xs font-semibold uppercase tracking-[0.2em] text-[#141210] transition-colors hover:bg-[#b08544]">
+            Explore Projects
+          </a>
+          <a href="#enquiry" className="px-8 py-4 text-xs font-medium uppercase tracking-[0.2em] text-white transition-colors hover:text-[#C59A5A]">
+            Start a Project
+          </a>
+        </div>
+      </div>
+
+      <div className="relative mx-auto w-full max-w-2xl lg:max-w-none">
+        <div aria-hidden="true" className="absolute -inset-3 rounded-[2rem] bg-[#C59A5A]/15 blur-2xl" />
+        <div className="relative overflow-hidden rounded-2xl border border-white/20 bg-[#25221d] shadow-[0_28px_90px_rgba(0,0,0,0.48)]">
+          <img
+            src={heroHome}
+            alt="A finished HM Constructions home with modern architectural details"
+            fetchPriority="high"
+            className="aspect-[5/4] w-full object-cover object-center"
+          />
         </div>
       </div>
     </div>

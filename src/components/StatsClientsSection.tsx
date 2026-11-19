@@ -3,7 +3,7 @@ import React from "react";
 export const StatsClientsSection: React.FC = () => {
   const stats = [
     { label: "Clients", value: "150+" },
-    { label: "Projects", value: "70+" },
+    { label: "Projects", value: "170+" },
     { label: "Repairings", value: "15+" },
   ];
 
