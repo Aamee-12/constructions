@@ -48,7 +48,7 @@ export const PricingPackagesSection: React.FC = () => {
           title: "Structure",
           items: [
             "Steel: Suguna / Gopala, etc.",
-            "Cement: Priya / Maharaja",
+            "Cement: Priya / Maha",
             "Blocks: Solid Concrete (6\" / 4\")",
           ],
         },
@@ -62,7 +62,7 @@ export const PricingPackagesSection: React.FC = () => {
         {
           title: "Bathroom",
           items: [
-            "Wall Tiles: Up to ₹50/sqft (7ft height)",
+            "Wall Tiles: Up to ₹50/sqft (Full height)",
             "Sanitary & CP Fittings: ₹20,000/bath",
           ],
         },
@@ -101,8 +101,8 @@ export const PricingPackagesSection: React.FC = () => {
           title: "Structure",
           items: [
             "Steel: Meenakshi / Prime Gold, etc.",
-            "Cement: Birla Super / Maharaja",
-            "Blocks: Solid Concrete (6\")",
+            "Cement: Birla Super / Maha",
+            "Blocks: Solid Concrete (6\") — ₹50/block",
           ],
         },
         {
@@ -115,7 +115,7 @@ export const PricingPackagesSection: React.FC = () => {
         {
           title: "Bathroom",
           items: [
-            "Wall Tiles: Up to ₹70/sqft (7ft height)",
+            "Wall Tiles: Up to ₹70/sqft (Full height)",
             "Sanitary & CP Fittings: ₹30,000/bath",
           ],
         },
@@ -154,7 +154,7 @@ export const PricingPackagesSection: React.FC = () => {
           items: [
             "Steel: Indus, etc.",
             "Cement: Birla Super",
-            "Blocks: Solid Concrete (6\")",
+            "Blocks: Solid Concrete (6\") — ₹50/block",
           ],
         },
         {
@@ -166,7 +166,7 @@ export const PricingPackagesSection: React.FC = () => {
         {
           title: "Bathroom",
           items: [
-            "Wall Tiles: Up to ₹100/sqft (7ft height)",
+            "Wall Tiles: Up to ₹100/sqft (Full height)",
             "Sanitary & CP Fittings: ₹60,000/bath (Jaguar)",
           ],
         },

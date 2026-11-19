@@ -31,14 +31,7 @@ const mobileNavLinks = [
 ];
 
 export const Navigation: React.FC = () => {
-  const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   // Prevent background scroll when mobile drawer is open
   useEffect(() => {
@@ -76,15 +69,13 @@ export const Navigation: React.FC = () => {
       <header className="fixed top-0 left-0 w-full z-50 pointer-events-none px-3 sm:px-6">
         <div
           className={`
-            mx-auto mt-2 sm:mt-3 max-w-4xl rounded-full px-3 sm:px-5 py-1.5 sm:py-2 pointer-events-auto
+            mx-auto mt-3 sm:mt-4 max-w-5xl rounded-full px-4 sm:px-7 py-2.5 sm:py-3 pointer-events-auto
             transition-all duration-500 ease-out flex items-center justify-between
           `}
           style={{
-            background: scrolled ? "rgba(14, 11, 8, 0.20)" : "rgba(14, 11, 8, 0.10)",
-            backdropFilter: "blur(6px) saturate(120%)",
-            WebkitBackdropFilter: "blur(6px) saturate(120%)",
-            border: "1px solid rgba(212,175,80,0.08)",
-            boxShadow: "0 3px 12px rgba(0,0,0,0.10)",
+            background: "#0E0B08",
+            border: "1px solid rgba(212,175,80,0.30)",
+            boxShadow: "0 8px 32px rgba(0,0,0,0.5), inset 0 1px 0 rgba(212,175,80,0.12)",
           }}
         >
           {/* LEFT — Clickable Logo */}
@@ -97,12 +88,12 @@ export const Navigation: React.FC = () => {
             <img
               src="/assets/logo.png"
               alt="HM Constructions and Interiors"
-              className="h-8 sm:h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              className="h-9 sm:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
             />
           </a>
 
           {/* CENTER — Desktop Nav links */}
-          <nav className="hidden lg:flex items-center gap-5 xl:gap-6">
+          <nav className="hidden lg:flex items-center gap-7 xl:gap-9">
             {navLinks.map((item) => (
               <a
                 key={item.label}
